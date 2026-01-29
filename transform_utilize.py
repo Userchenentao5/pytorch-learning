@@ -31,7 +31,9 @@ resized_transformed_img = transform_toTense(resized_img)
 
 writer.add_image('Resized Image', resized_transformed_img, 0)
 
-
-
+# PIL -> PIL -> Tensor
+trans_compose = transforms.Compose([transforms.Resize(512), transforms.ToTensor()])
+compose_handled_img = trans_compose(jpg_img)
+writer.add_image('Resized Image', compose_handled_img, 1)
 
 writer.close()
